@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="ja" ng-app>
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS + TypeScript</title>
+    <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+    <script src="app.js"></script>
+
+    <style>
+        .done-true{
+            color:gray;
+            text-decoration:line-through;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>AngularJS + TypeScript</h1>
+    <div ng-controller="TaskCtrl">
+        <p>Finished Task: {{getDoneCount()}} / {{tasks.length}}</p>
+        <button ng-click="deleteDone()">Delete Finished</button>
+        <ul>
+            <li ng-repeat="task in tasks">
+                <input type="checkbox" ng-model="task.done" />
+                <span class="done-{{task.done}}">{{task.body}}</span>
+                <a ng-click="deleteTask($index)">[x]</a>
+            </li>
+        </ul>
+        <form ng-submit="addNew()">
+            <input type="text" ng-model="newTaskBody" />
+            <input type="submit" value="add" />
+        </form>
+    </div>
+</body>
+</html>
